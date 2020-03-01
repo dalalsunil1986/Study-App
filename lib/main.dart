@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:study/constants.dart';
 import 'package:study/ui/sizeInfo.dart';
 import 'package:study/ui/ui_utils.dart';
+import 'package:study/widgets/book_card.dart';
 import 'package:study/widgets/drawer.dart';
 
 void main() => runApp(MyApp());
@@ -71,67 +72,39 @@ class HomeScreen extends StatelessWidget {
                   ),
                   Container(
                     height: sizingInformation.screenSize.height * .15,
-                    child: Row(
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
                       children: <Widget>[
-                        Container(
-                          padding: EdgeInsets.all(
-                            sizingInformation.screenSize.width * .03,
-                          ),
-                          width: sizingInformation.screenSize.width * .67,
-                          color: kWhitColor,
-                          child: Row(
-                            children: <Widget>[
-                              Image.network(
-                                "https://cs.cheggcdn.com/covers2/29180000/29182981_1375631097_Width200.jpg",
-                                fit: BoxFit.cover,
-                                width: sizingInformation.screenSize.width * .18,
-                              ),
-                              Column(
-                                children: <Widget>[
-                                  Container(
-                                    // margin: EdgeInsets.only(right: 15),
-                                    padding: EdgeInsets.only(
-                                      left: sizingInformation.screenSize.width *
-                                          .04,
-                                    ),
-                                    width: sizingInformation.screenSize.width *
-                                        .42,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Text(
-                                          "Fundamentals of Electric Circuits",
-                                          style:
-                                              Theme.of(context).textTheme.title,
-                                          maxLines: 2,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          "Charles K. Alexander, Mathew N. O. Sadiku, Charles K. Alexander",
-                                          maxLines: 2,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .caption,
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
+                        BookCard(
+                          sizingInformation: sizingInformation,
+                          auths:
+                              "Charles K. Alexander, Mathew N. O. Sadiku, Charles K. Alexander",
+                          name: "Fundamentals of Electric Circuits",
+                          poster:
+                              'https://cs.cheggcdn.com/covers2/29180000/29182981_1375631097_Width200.jpg',
+                        ),
+                        BookCard(
+                          sizingInformation: sizingInformation,
+                          auths:
+                              "Charles K. Alexander, Mathew N. O. Sadiku, Charles K. Alexander",
+                          name: "Fundamentals of Electric Circuits",
+                          poster:
+                              'https://cs.cheggcdn.com/covers2/29180000/29182981_1375631097_Width200.jpg',
+                        ),
+                        BookCard(
+                          sizingInformation: sizingInformation,
+                          auths:
+                              "Charles K. Alexander, Mathew N. O. Sadiku, Charles K. Alexander",
+                          name: "Fundamentals of Electric Circuits",
+                          poster:
+                              'https://cs.cheggcdn.com/covers2/29180000/29182981_1375631097_Width200.jpg',
                         ),
                       ],
                     ),
                   ),
-                  Container(),
+                  SizedBox(
+                    height: sizingInformation.screenSize.height * 0.03,
+                  ),
                 ],
               ),
             ),
