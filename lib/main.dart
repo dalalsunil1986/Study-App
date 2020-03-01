@@ -105,6 +105,7 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(
                     height: sizingInformation.screenSize.height * 0.03,
                   ),
+                  HomeSearBox()
                 ],
               ),
             ),
@@ -112,5 +113,42 @@ class HomeScreen extends StatelessWidget {
         );
       },
     );
+  }
+}
+
+class HomeSearBox extends StatelessWidget {
+  const HomeSearBox({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(builder: (context, boxSizing) {
+      return Material(
+        elevation: 3,
+        child: Container(
+          padding: EdgeInsets.all(16),
+          width: boxSizing.maxWidth,
+          color: kWhitColor,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Icon(
+                Icons.search,
+                color: kPrimaryColor,
+                size: 35,
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
+              Text(
+                "Search What you need",
+                style: Theme.of(context).textTheme.title,
+              ),
+              Text("We still add more books hopes you stay with us",),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
+            ],
+          ),
+        ),
+      );
+    });
   }
 }
