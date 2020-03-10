@@ -105,7 +105,49 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(
                     height: sizingInformation.screenSize.height * 0.03,
                   ),
-                  HomeSearBox()
+                  HomeSearBox(),
+                  SizedBox(
+                    height: sizingInformation.screenSize.height * 0.03,
+                  ),
+                  Text(
+                    "Most Popular Books",
+                    style: Theme.of(context).textTheme.title,
+                  ),
+                  SizedBox(
+                    height: sizingInformation.screenSize.height * .02,
+                  ),
+                  Container(
+                    height: sizingInformation.screenSize.height * .15,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: <Widget>[
+                        BookCard(
+                          sizingInformation: sizingInformation,
+                          auths:
+                              "Charles K. Alexander, Mathew N. O. Sadiku, Charles K. Alexander",
+                          name: "Fundamentals of Electric Circuits",
+                          poster:
+                              'https://cs.cheggcdn.com/covers2/49920000/49921181_1439853763_Width200.jpg',
+                        ),
+                        BookCard(
+                          sizingInformation: sizingInformation,
+                          auths:
+                              "Charles K. Alexander, Mathew N. O. Sadiku, Charles K. Alexander",
+                          name: "Fundamentals of Electric Circuits",
+                          poster:
+                              'https://cs.cheggcdn.com/covers2/49920000/49921181_1439853763_Width200.jpg',
+                        ),
+                        BookCard(
+                          sizingInformation: sizingInformation,
+                          auths:
+                              "Charles K. Alexander, Mathew N. O. Sadiku, Charles K. Alexander",
+                          name: "Fundamentals of Electric Circuits",
+                          poster:
+                              'https://cs.cheggcdn.com/covers2/49920000/49921181_1439853763_Width200.jpg',
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -123,12 +165,19 @@ class HomeSearBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var mediaQuery = MediaQuery.of(context);
     return LayoutBuilder(builder: (context, boxSizing) {
+      var sizingInformation = SizingInformation(
+        orientation: mediaQuery.orientation,
+        deviceType: getDeviceType(mediaQuery),
+        screenSize: mediaQuery.size,
+        localWidgetSize: Size(boxSizing.maxHeight, boxSizing.maxWidth),
+      );
       return Material(
         elevation: 3,
         child: Container(
           padding: EdgeInsets.all(16),
-          width: boxSizing.maxWidth,
+          width: sizingInformation.localWidgetSize.width,
           color: kWhitColor,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -138,13 +187,31 @@ class HomeSearBox extends StatelessWidget {
                 color: kPrimaryColor,
                 size: 35,
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
               Text(
                 "Search What you need",
                 style: Theme.of(context).textTheme.title,
               ),
-              Text("We still add more books hopes you stay with us",),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
+              Text(
+                "We still add more books hopes you stay with us",
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+              SizedBox(
+                width: sizingInformation.localWidgetSize.width,
+                child: RaisedButton(
+                  color: kButtonColor,
+                  textColor: kWhitColor,
+                  onPressed: () {},
+                  child: Text(
+                    "Search Books",
+                    // style: Theme.of(context).textTheme.button,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
