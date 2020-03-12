@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:study/constants.dart';
+import 'package:study/screens/book_list_screen.dart';
 import 'package:study/ui/sizeInfo.dart';
 import 'package:study/ui/ui_utils.dart';
 import 'package:study/widgets/book_card.dart';
 import 'package:study/widgets/drawer.dart';
+import 'package:study/widgets/my_appbar.dart';
 
 void main() => runApp(MyApp());
 
@@ -27,7 +29,8 @@ class MyApp extends StatelessWidget {
           // subhead: kSnigletFont,
         ),
       ),
-      home: HomeScreen(),
+      // home: HomeScreen(),
+      home: BookListScreen(),
     );
   }
 }
@@ -46,16 +49,7 @@ class HomeScreen extends StatelessWidget {
         );
         return SafeArea(
           child: Scaffold(
-            appBar: AppBar(
-              title: Text("Solution", style: TextStyle(color: kBlackColor)),
-              bottom: PreferredSize(
-                child: Container(
-                  color: kPrimaryColor,
-                  height: 2.0,
-                ),
-                preferredSize: Size.fromHeight(2.0),
-              ),
-            ),
+            appBar: homeAppBar(title: "Solution"),
             drawer: MyDrawer(),
             body: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -156,6 +150,19 @@ class HomeScreen extends StatelessWidget {
       },
     );
   }
+
+  // AppBar buildAppBar() {
+  //   return AppBar(
+  //     title: Text("Solution", style: TextStyle(color: kBlackColor)),
+  //     bottom: PreferredSize(
+  //       child: Container(
+  //         color: kPrimaryColor,
+  //         height: 2.0,
+  //       ),
+  //       preferredSize: Size.fromHeight(2.0),
+  //     ),
+  //   );
+  // }
 }
 
 class HomeSearBox extends StatelessWidget {
