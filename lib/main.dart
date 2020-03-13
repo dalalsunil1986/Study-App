@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:study/constants.dart';
-import 'package:study/screens/book_details_screen.dart';
 import 'package:study/screens/book_list_screen.dart';
+import 'package:study/screens/chapter_screen.dart';
 import 'package:study/ui/sizeInfo.dart';
 import 'package:study/ui/ui_utils.dart';
 import 'package:study/widgets/book_card.dart';

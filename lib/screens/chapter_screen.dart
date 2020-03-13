@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:study/constants.dart';
+import 'package:study/screens/problem_screen.dart';
 import 'package:study/widgets/details_card.dart';
 import 'package:study/widgets/drawer.dart';
 import 'package:study/widgets/my_appbar.dart';
@@ -37,7 +38,14 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                   children: <Widget>[
                     Chapter(
                       name: "Chapter A",
-                      press: () {},
+                      press: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BookProblemScreen(),
+                          ),
+                        );
+                      },
                     ),
                     Chapter(
                       name: "Chapter B",

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:study/constants.dart';
-import 'package:study/screens/book_details_screen.dart';
+import 'package:study/screens/chapter_screen.dart';
+
 import 'package:study/widgets/book_list_card.dart';
 import 'package:study/widgets/drawer.dart';
 import 'package:study/widgets/my_appbar.dart';
