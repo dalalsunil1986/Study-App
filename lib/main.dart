@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:study/constants.dart';
+import 'package:study/screens/book_details_screen.dart';
 import 'package:study/screens/book_list_screen.dart';
 import 'package:study/ui/sizeInfo.dart';
 import 'package:study/ui/ui_utils.dart';
@@ -30,7 +31,8 @@ class MyApp extends StatelessWidget {
         ),
       ),
       // home: HomeScreen(),
-      home: BookListScreen(),
+      home: BookListhScreen(),
+      // home: BookDetailsScreen(),
     );
   }
 }
