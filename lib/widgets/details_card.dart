@@ -30,9 +30,9 @@ class BookDetailsCard extends StatelessWidget {
           children: <Widget>[
             Material(
               elevation: 3,
+              color: kWhitColor,
               child: Container(
                 padding: EdgeInsets.all(boxSizing.maxWidth * .03),
-                color: kWhitColor,
                 height: 130,
                 child: Row(
                   children: <Widget>[

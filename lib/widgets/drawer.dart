@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:study/constants.dart';
+import 'package:study/main.dart';
+import 'package:study/screens/book_list_screen.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({
@@ -27,7 +29,29 @@ class MyDrawer extends StatelessWidget {
               ),
             ),
           ),
-          MenuItem(title: "Home", iconName: Icons.home, press: () {}),
+          MenuItem(
+            title: "Home",
+            iconName: Icons.home,
+            press: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomeScreen(),
+                ),
+              );
+            },
+          ),
+          MenuItem(
+              title: "All Books",
+              iconName: Icons.library_books,
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BookListhScreen(),
+                  ),
+                );
+              }),
           MenuItem(
               title: "Request",
               iconName: Icons.record_voice_over,

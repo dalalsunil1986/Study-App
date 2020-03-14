@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:study/constants.dart';
-import 'package:study/screens/book_list_screen.dart';
+
 import 'package:study/screens/chapter_screen.dart';
+import 'package:study/screens/search_screen.dart';
 import 'package:study/ui/sizeInfo.dart';
 import 'package:study/ui/ui_utils.dart';
 import 'package:study/widgets/book_card.dart';
 import 'package:study/widgets/drawer.dart';
 import 'package:study/widgets/my_appbar.dart';
+import 'package:device_preview/device_preview.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(
+      DevicePreview(
+        builder: (context) => MyApp(),
+      ),
+    );
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      locale: DevicePreview.of(context).locale, // <--- Add the locale
+      builder: DevicePreview.appBuilder,
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -30,9 +38,7 @@ class MyApp extends StatelessWidget {
           // subhead: kSnigletFont,
         ),
       ),
-      // home: HomeScreen(),
-      home: BookListhScreen(),
-      // home: BookDetailsScreen(),
+      home: HomeScreen(),
     );
   }
 }
@@ -55,9 +61,7 @@ class HomeScreen extends StatelessWidget {
             drawer: MyDrawer(),
             body: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Column(
-                // mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: ListView(
                 children: <Widget>[
                   Text(
                     "Recently Added Books",
@@ -72,6 +76,14 @@ class HomeScreen extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       children: <Widget>[
                         BookCard(
+                          press: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BookDetailsScreen(),
+                              ),
+                            );
+                          },
                           sizingInformation: sizingInformation,
                           auths:
                               "Charles K. Alexander, Mathew N. O. Sadiku, Charles K. Alexander",
@@ -80,6 +92,14 @@ class HomeScreen extends StatelessWidget {
                               'https://cs.cheggcdn.com/covers2/29180000/29182981_1375631097_Width200.jpg',
                         ),
                         BookCard(
+                          press: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BookDetailsScreen(),
+                              ),
+                            );
+                          },
                           sizingInformation: sizingInformation,
                           auths:
                               "Charles K. Alexander, Mathew N. O. Sadiku, Charles K. Alexander",
@@ -88,6 +108,14 @@ class HomeScreen extends StatelessWidget {
                               'https://cs.cheggcdn.com/covers2/29180000/29182981_1375631097_Width200.jpg',
                         ),
                         BookCard(
+                          press: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BookDetailsScreen(),
+                              ),
+                            );
+                          },
                           sizingInformation: sizingInformation,
                           auths:
                               "Charles K. Alexander, Mathew N. O. Sadiku, Charles K. Alexander",
@@ -118,6 +146,14 @@ class HomeScreen extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       children: <Widget>[
                         BookCard(
+                          press: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BookDetailsScreen(),
+                              ),
+                            );
+                          },
                           sizingInformation: sizingInformation,
                           auths:
                               "Charles K. Alexander, Mathew N. O. Sadiku, Charles K. Alexander",
@@ -126,6 +162,14 @@ class HomeScreen extends StatelessWidget {
                               'https://cs.cheggcdn.com/covers2/49920000/49921181_1439853763_Width200.jpg',
                         ),
                         BookCard(
+                          press: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BookDetailsScreen(),
+                              ),
+                            );
+                          },
                           sizingInformation: sizingInformation,
                           auths:
                               "Charles K. Alexander, Mathew N. O. Sadiku, Charles K. Alexander",
@@ -134,6 +178,14 @@ class HomeScreen extends StatelessWidget {
                               'https://cs.cheggcdn.com/covers2/49920000/49921181_1439853763_Width200.jpg',
                         ),
                         BookCard(
+                          press: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BookDetailsScreen(),
+                              ),
+                            );
+                          },
                           sizingInformation: sizingInformation,
                           auths:
                               "Charles K. Alexander, Mathew N. O. Sadiku, Charles K. Alexander",
@@ -152,19 +204,6 @@ class HomeScreen extends StatelessWidget {
       },
     );
   }
-
-  // AppBar buildAppBar() {
-  //   return AppBar(
-  //     title: Text("Solution", style: TextStyle(color: kBlackColor)),
-  //     bottom: PreferredSize(
-  //       child: Container(
-  //         color: kPrimaryColor,
-  //         height: 2.0,
-  //       ),
-  //       preferredSize: Size.fromHeight(2.0),
-  //     ),
-  //   );
-  // }
 }
 
 class HomeSearBox extends StatelessWidget {
@@ -214,7 +253,14 @@ class HomeSearBox extends StatelessWidget {
                 child: RaisedButton(
                   color: kButtonColor,
                   textColor: kWhitColor,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SearchScreen(),
+                      ),
+                    );
+                  },
                   child: Text(
                     "Search Books",
                     // style: Theme.of(context).textTheme.button,

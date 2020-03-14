@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:study/constants.dart';
+import 'package:study/screens/solution_screen.dart';
 import 'package:study/widgets/drawer.dart';
 import 'package:study/widgets/my_appbar.dart';
 
@@ -52,7 +53,14 @@ class ProblemButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlatButton(
       color: kWhitColor,
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => BookSolutionScreen(),
+          ),
+        );
+      },
       child: Text(
         "$number",
         style: Theme.of(context).textTheme.display1,

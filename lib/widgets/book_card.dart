@@ -8,64 +8,66 @@ class BookCard extends StatelessWidget {
     @required this.name,
     @required this.auths,
     @required this.poster,
+    @required this.press,
   });
 
   final SizingInformation sizingInformation;
   final String name;
   final String auths;
   final String poster;
+  final Function press;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
         Material(
+          color: kWhitColor,
           elevation: 3,
-          child: Container(
-            padding: EdgeInsets.all(
-              sizingInformation.screenSize.width * .03,
-            ),
-            width: sizingInformation.screenSize.width * .67,
-            color: kWhitColor,
-            child: Row(
-              children: <Widget>[
-                Image.network(
-                  poster,
-                  fit: BoxFit.cover,
-                  width: sizingInformation.screenSize.width * .18,
-                ),
-                Column(
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.only(
-                        left: sizingInformation.screenSize.width * .04,
-                      ),
-                      width: sizingInformation.screenSize.width * .42,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            name,
-                            style: Theme.of(context).textTheme.title,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            auths,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: Theme.of(context).textTheme.caption,
-                          )
-                        ],
-                      ),
+          child: InkWell(
+            onTap: press,
+            child: Container(
+              padding: EdgeInsets.all(
+                sizingInformation.screenSize.width * .03,
+              ),
+              // width: sizingInformation.screenSize.width * .67,
+              child: Row(
+                children: <Widget>[
+                  Image.network(
+                    poster,
+                    fit: BoxFit.cover,
+                    width: sizingInformation.screenSize.width * .18,
+                  ),
+                  SizedBox(
+                    width: sizingInformation.localWidgetSize.width * .04,
+                  ),
+                  Container(
+                    width: sizingInformation.screenSize.width * .42,
+                    height: 200,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          name,
+                          style: Theme.of(context).textTheme.title,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          auths,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: Theme.of(context).textTheme.caption,
+                        )
+                      ],
                     ),
-                  ],
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

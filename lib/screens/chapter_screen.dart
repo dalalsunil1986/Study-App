@@ -117,22 +117,27 @@ class Chapter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: kWhitColor,
-        border: Border(
-          bottom: BorderSide(
-            color: kBackgoundColor,
-            width: 3,
+    return Material(
+      color: kWhitColor,
+      child: InkWell(
+        onTap: press,
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: kBackgoundColor,
+                width: 3,
+              ),
+            ),
+          ),
+          child: ListTile(
+            title: Text(
+              name,
+              style: TextStyle(fontSize: 18),
+            ),
+            // onTap: press,
           ),
         ),
-      ),
-      child: ListTile(
-        title: Text(
-          name,
-          style: TextStyle(fontSize: 18),
-        ),
-        onTap: press,
       ),
     );
   }
