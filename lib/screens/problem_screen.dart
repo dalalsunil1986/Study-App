@@ -61,7 +61,7 @@ class ProblemButton extends StatelessWidget {
         );
       },
       child: Text(
-        "$number" + "PP",
+        "$number",
         style: Theme.of(context).textTheme.display1.copyWith(fontSize: 25),
       ),
     );

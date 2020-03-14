@@ -38,7 +38,7 @@ class BookDetailsCard extends StatelessWidget {
                   children: <Widget>[
                     Image.network(
                       poster,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                       width: sizingInformation.localWidgetSize.width * .18,
                     ),
                     SizedBox(

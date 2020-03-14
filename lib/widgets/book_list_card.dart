@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:study/constants.dart';
 import 'package:study/models/card_hight.dart';

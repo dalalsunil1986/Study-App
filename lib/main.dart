@@ -6,8 +6,6 @@ import 'package:study/screens/chapter_screen.dart';
 import 'package:study/screens/search_screen.dart';
 import 'package:study/ui/sizeInfo.dart';
 import 'package:study/ui/ui_utils.dart';
-import 'package:study/widgets/book_card.dart';
-import 'package:study/widgets/book_list_card.dart';
 import 'package:study/widgets/drawer.dart';
 import 'package:study/widgets/my_appbar.dart';
 import 'package:device_preview/device_preview.dart';
@@ -169,6 +167,9 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ],
                     ),
+                  ),
+                  SizedBox(
+                    height: sizingInformation.screenSize.height * 0.03,
                   ),
                 ],
               ),

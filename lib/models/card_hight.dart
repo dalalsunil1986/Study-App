@@ -13,7 +13,7 @@ getCardHight(sizingInformation) {
 getCardHightSmall(sizingInformation) {
   double cardHeight = 0;
   if (sizingInformation.screenSize.width <= 400) {
-    cardHeight = 0.30;
+    cardHeight = 0.31;
   } else if (sizingInformation.screenSize.width < 465) {
     cardHeight = 0.26;
   } else {
