@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:study/constants.dart';
+import 'package:study/models/problem_grid_count.dart';
 import 'package:study/screens/solution_screen.dart';
 import 'package:study/widgets/drawer.dart';
 import 'package:study/widgets/my_appbar.dart';
@@ -25,15 +26,13 @@ class _BookProblemScreenState extends State<BookProblemScreen> {
         drawer: MyDrawer(),
         body: Padding(
           padding: EdgeInsets.only(top: 16, left: 16, right: 16),
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 20),
-            child: GridView.count(
-              primary: false,
-              crossAxisSpacing: 6,
-              mainAxisSpacing: 16,
-              crossAxisCount: 4,
-              children: problems,
-            ),
+          child: GridView.count(
+            primary: false,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            crossAxisCount:
+                getProblemGridNumber(MediaQuery.of(context).size.width),
+            children: problems,
           ),
         ),
       ),
@@ -62,8 +61,8 @@ class ProblemButton extends StatelessWidget {
         );
       },
       child: Text(
-        "$number",
-        style: Theme.of(context).textTheme.display1,
+        "$number" + "PP",
+        style: Theme.of(context).textTheme.display1.copyWith(fontSize: 25),
       ),
     );
   }
