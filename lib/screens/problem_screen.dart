@@ -62,6 +62,8 @@ class ProblemButton extends StatelessWidget {
       },
       child: Text(
         "$number",
+        maxLines: 2,
+        overflow: TextOverflow.ellipsis,
         style: Theme.of(context).textTheme.display1.copyWith(fontSize: 25),
       ),
     );

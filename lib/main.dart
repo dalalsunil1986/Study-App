@@ -55,7 +55,6 @@ class HomeScreen extends StatelessWidget {
           screenSize: mediaQuery.size,
           localWidgetSize: Size(boxSizing.maxWidth, boxSizing.maxHeight),
         );
-        print(sizingInformation.screenSize.width);
         return SafeArea(
           child: Scaffold(
             appBar: homeAppBar(title: "Solution"),

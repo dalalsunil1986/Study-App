@@ -23,7 +23,7 @@ class _BookSolutionScreenState extends State<BookSolutionScreen> {
                 children: <Widget>[
                   ZoomableWidget(
                     child: Image.network(
-                      "https://i.imgur.com/qj6yRxJ.jpg",
+                      "https://i.imgur.com/4LZUewS.jpg",
                       fit: BoxFit.contain,
                     ),
                   ),
