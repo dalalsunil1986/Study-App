@@ -46,6 +46,17 @@ class _BookProblemScreenState extends State<BookProblemScreen> {
                       itemBuilder: (context, index) {
                         return ProblemButton(
                           number: data.problems[index].number,
+                          press: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BookSolutionScreen(
+                                  number: data.problems[index].number,
+                                  problemId: data.problems[index].id,
+                                ),
+                              ),
+                            );
+                          },
                         );
                       },
                     ),
@@ -59,25 +70,20 @@ class _BookProblemScreenState extends State<BookProblemScreen> {
 }
 
 class ProblemButton extends StatelessWidget {
+  final String number;
+  final Function press;
+
   const ProblemButton({
     Key key,
     @required this.number,
+    @required this.press,
   }) : super(key: key);
-
-  final String number;
 
   @override
   Widget build(BuildContext context) {
     return FlatButton(
       color: kWhitColor,
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => BookSolutionScreen(),
-          ),
-        );
-      },
+      onPressed: press,
       child: Text(
         "$number",
         maxLines: 2,

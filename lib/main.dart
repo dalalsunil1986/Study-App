@@ -4,6 +4,7 @@ import 'package:study/models/book_data.dart';
 import 'package:study/models/card_hight.dart';
 import 'package:study/provider/chapter_provider.dart';
 import 'package:study/provider/problem_provider.dart';
+import 'package:study/provider/solution_provider.dart';
 
 import 'package:study/screens/chapter_screen.dart';
 import 'package:study/screens/search_screen.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => BookData()),
         ChangeNotifierProvider(create: (context) => ChapterProvider()),
         ChangeNotifierProvider(create: (context) => ProblemProvider()),
+        ChangeNotifierProvider(create: (context) => SolutionProvider()),
       ],
       child: MaterialApp(
         locale: DevicePreview.of(context).locale, // <--- Add the locale
