@@ -78,7 +78,7 @@ class ChapterProvider extends ChangeNotifier {
   }
 
   int get chapterLength {
-    return chapterList.length;
+    return chapterList != null ? chapterList.length : 0;
   }
 
   bool isBook() {

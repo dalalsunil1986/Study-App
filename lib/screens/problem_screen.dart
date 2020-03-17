@@ -1,39 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:study/constants.dart';
 import 'package:study/models/problem_grid_count.dart';
+import 'package:study/provider/problem_provider.dart';
 import 'package:study/screens/solution_screen.dart';
 import 'package:study/widgets/drawer.dart';
 import 'package:study/widgets/my_appbar.dart';
+import 'package:provider/provider.dart';
 
 class BookProblemScreen extends StatefulWidget {
+  final int chapterId;
+  final String chapterName;
+
+  const BookProblemScreen({
+    Key key,
+    @required this.chapterId,
+    @required this.chapterName,
+  }) : super(key: key);
+
   @override
   _BookProblemScreenState createState() => _BookProblemScreenState();
 }
 
 class _BookProblemScreenState extends State<BookProblemScreen> {
-  // List problems = [];
-
-  final problems = List<ProblemButton>.generate(
-    50,
-    (i) => ProblemButton(number: i),
-  );
-
   @override
   Widget build(BuildContext context) {
+    Provider.of<ProblemProvider>(context).fatchProblems(widget.chapterId);
     return SafeArea(
       child: Scaffold(
-        appBar: defaultAppBar(title: "Chapter A", context: context),
+        appBar: defaultAppBar(title: widget.chapterName, context: context),
         drawer: MyDrawer(),
-        body: Padding(
-          padding: EdgeInsets.only(top: 16, left: 16, right: 16),
-          child: GridView.count(
-            primary: false,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            crossAxisCount:
-                getProblemGridNumber(MediaQuery.of(context).size.width),
-            children: problems,
-          ),
+        body: Consumer<ProblemProvider>(
+          builder: (context, data, child) {
+            return data.problems != null
+                ? Padding(
+                    padding: EdgeInsets.only(top: 16, left: 16, right: 16),
+                    child: GridView.builder(
+                      primary: false,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                        crossAxisCount: getProblemGridNumber(
+                            MediaQuery.of(context).size.width),
+                      ),
+                      itemCount: data.problems.length,
+                      itemBuilder: (context, index) {
+                        return ProblemButton(
+                          number: data.problems[index].number,
+                        );
+                      },
+                    ),
+                  )
+                : CircularProgressIndicator();
+          },
         ),
       ),
     );
@@ -46,7 +64,7 @@ class ProblemButton extends StatelessWidget {
     @required this.number,
   }) : super(key: key);
 
-  final int number;
+  final String number;
 
   @override
   Widget build(BuildContext context) {

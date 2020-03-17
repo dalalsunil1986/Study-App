@@ -18,7 +18,11 @@ class BookDetailsScreen extends StatefulWidget {
 class _BookDetailsScreenState extends State<BookDetailsScreen> {
   @override
   Widget build(BuildContext context) {
-    Provider.of<ChapterProvider>(context).fatchBookChapter(widget.bookId);
+    try {
+      Provider.of<ChapterProvider>(context).fatchBookChapter(widget.bookId);
+    } catch (error) {
+      print("$error");
+    }
     return Consumer<ChapterProvider>(
       builder: (context, data, child) {
         return SafeArea(
@@ -29,45 +33,43 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
             drawer: MyDrawer(),
             body: Padding(
               padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
-              child: Column(
-                children: <Widget>[
-                  data.book != null
-                      ? BookDetailsCard(
+              child: data.book != null
+                  ? Column(
+                      children: <Widget>[
+                        BookDetailsCard(
                           edition: data.book.edition,
                           auths: data.book.auths,
                           name: data.book.name,
                           poster:
                               'https://cs.cheggcdn.com/covers2/29180000/29182981_1375631097_Width200.jpg',
-                        )
-                      : CircularProgressIndicator(),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  data.book != null
-                      ? Expanded(
+                        ),
+                        SizedBox(
+                          height: 16,
+                        ),
+                        Expanded(
                           child: ListView.builder(
                             itemCount: data.chapterLength,
                             itemBuilder: (context, index) {
-                              return data.book != null
-                                  ? Chapter(
-                                      name: data.chapters[index].name,
-                                      press: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                BookProblemScreen(),
-                                          ),
-                                        );
-                                      },
-                                    )
-                                  : CircularProgressIndicator();
+                              return Chapter(
+                                name: data.chapters[index].name,
+                                press: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => BookProblemScreen(
+                                        chapterId: data.chapters[index].id,
+                                        chapterName: data.chapters[index].name,
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
                             },
                           ),
                         )
-                      : CircularProgressIndicator(),
-                ],
-              ),
+                      ],
+                    )
+                  : CircularProgressIndicator(),
             ),
           ),
         );

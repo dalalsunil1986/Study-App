@@ -19,7 +19,11 @@ class BookRequest {
     return http.get("http://192.168.0.25/api/chapters/?book_id=$bookId");
   }
 
-  // Future<http.Response> fetchFollowing() {
-  //   return http.get(url + 'users/' + userName + '/following' + query);
-  // }
+  Future<http.Response> fetchProblems(chapterId) {
+    return http.get("http://192.168.0.25/api/problems/?chapter_id=$chapterId");
+  }
+
+  Future<http.Response> fetchSolution(problemId) {
+    return http.get("http://192.168.0.25/api/problems/$problemId");
+  }
 }
