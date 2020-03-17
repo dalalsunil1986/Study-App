@@ -40,7 +40,9 @@ class _BookListhScreenState extends State<BookListhScreen> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => BookDetailsScreen(),
+                                      builder: (context) => BookDetailsScreen(
+                                        bookId: bookData.getBooks()[index].id,
+                                      ),
                                     ),
                                   );
                                 },

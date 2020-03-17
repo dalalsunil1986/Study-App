@@ -11,7 +11,7 @@ class BookData extends ChangeNotifier {
 
   Future<bool> fetchBooks() async {
     // setLoading(true);
-    await BookRequest().fetchBook().then((data) {
+    await BookRequest().fetchBooks().then((data) {
       setLoading(false);
       if (data.statusCode == 200) {
         Iterable list = json.decode(data.body)['results'];

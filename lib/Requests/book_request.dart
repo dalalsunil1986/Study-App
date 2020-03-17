@@ -7,11 +7,15 @@ class BookRequest {
 
   // Github(this.userName);
 
-  Future<http.Response> fetchBook() {
+  Future<http.Response> fetchBooks() {
     return http.get(url);
   }
 
-  Future<http.Response> fetchChapter(bookId) {
+  Future<http.Response> fetchBook(bookId) {
+    return http.get("http://192.168.0.25/api/books/$bookId");
+  }
+
+  Future<http.Response> fetchChapters(bookId) {
     return http.get("http://192.168.0.25/api/chapters/?book_id=$bookId");
   }
 

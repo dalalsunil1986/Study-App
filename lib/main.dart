@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:study/constants.dart';
 import 'package:study/models/book_data.dart';
 import 'package:study/models/card_hight.dart';
+import 'package:study/provider/chapter_provider.dart';
 
 import 'package:study/screens/chapter_screen.dart';
 import 'package:study/screens/search_screen.dart';
@@ -22,8 +23,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => BookData(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => BookData()),
+        ChangeNotifierProvider(create: (context) => ChapterProvider()),
+      ],
       child: MaterialApp(
         locale: DevicePreview.of(context).locale, // <--- Add the locale
         builder: DevicePreview.appBuilder,
