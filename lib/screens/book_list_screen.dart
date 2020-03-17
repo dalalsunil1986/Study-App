@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:study/constants.dart';
 import 'package:study/models/book_data.dart';
 import 'package:study/screens/chapter_screen.dart';
 import 'package:study/widgets/book_list_card.dart';
