@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:study/constants.dart';
+import 'package:study/models/book_data.dart';
 import 'package:study/models/card_hight.dart';
 
 import 'package:study/screens/chapter_screen.dart';
@@ -9,6 +10,7 @@ import 'package:study/ui/ui_utils.dart';
 import 'package:study/widgets/drawer.dart';
 import 'package:study/widgets/my_appbar.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(
       DevicePreview(
@@ -20,25 +22,28 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      locale: DevicePreview.of(context).locale, // <--- Add the locale
-      builder: DevicePreview.appBuilder,
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: kPrimaryColor,
-        scaffoldBackgroundColor: kBackgoundColor,
-        appBarTheme: AppBarTheme(
-          color: kWhitColor,
-          iconTheme: IconThemeData(color: kBlackColor),
+    return ChangeNotifierProvider(
+      create: (context) => BookData(),
+      child: MaterialApp(
+        locale: DevicePreview.of(context).locale, // <--- Add the locale
+        builder: DevicePreview.appBuilder,
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: kPrimaryColor,
+          scaffoldBackgroundColor: kBackgoundColor,
+          appBarTheme: AppBarTheme(
+            color: kWhitColor,
+            iconTheme: IconThemeData(color: kBlackColor),
+          ),
+          textTheme: TextTheme(
+            title: kSnigletFont,
+            headline: kSnigletFont,
+            // subhead: kSnigletFont,
+          ),
         ),
-        textTheme: TextTheme(
-          title: kSnigletFont,
-          headline: kSnigletFont,
-          // subhead: kSnigletFont,
-        ),
+        home: HomeScreen(),
       ),
-      home: HomeScreen(),
     );
   }
 }

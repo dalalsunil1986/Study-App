@@ -33,7 +33,7 @@ class BookListCard extends StatelessWidget {
         return Material(
           color: kWhitColor,
           child: InkWell(
-            onTap: () {},
+            onTap: press,
             child: Container(
               padding: EdgeInsets.all(boxSizing.maxWidth * .03),
               height: sizingInformation.screenSize.width * cardHeight,
