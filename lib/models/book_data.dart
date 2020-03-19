@@ -1,8 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:study/Requests/book_request.dart';
 import 'package:study/models/book.dart';
+import 'package:study/screens/chapter_screen.dart';
+import 'package:study/widgets/book_card_small.dart';
 
 class BookData extends ChangeNotifier {
   String errorMessage;

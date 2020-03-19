@@ -51,9 +51,10 @@ class _BookSolutionScreenState extends State<BookSolutionScreen> {
                           ),
                         ),
                         FadeInImage.memoryNetwork(
+                          width: boxsizing.maxWidth,
                           placeholder: kTransparentImage,
                           image: 'https://i.imgur.com/4LZUewS.jpg',
-                          fit: BoxFit.contain,
+                          fit: BoxFit.cover,
                         ),
                       ],
                     ),
